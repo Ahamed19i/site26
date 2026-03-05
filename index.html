@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ahamed Hassani — Ingénieur M2 Systèmes & Réseaux | DevOps · Cloud · Linux | Dakar">
+<meta name="author" content="Ahamed Hassani Mhoma">
+<title>Ahamed19i — Ingénieur Systèmes & Cloud</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#03080f; --bg2:#060e1c; --bg3:#091525;
+  --sf:#0b1d30; --sf2:#0f2540;
+  --bd:rgba(0,180,255,.1); --bd2:rgba(0,180,255,.2);
+  --ac:#00b4ff; --ac2:#0055ee;
+  --gr:#00e87a; --wa:#ffaa00; --da:#ff4455;
+  --tx:#ddeeff; --tx2:#7aa8c8; --tx3:#3d6a8a;
+  --glow:0 0 35px rgba(0,180,255,.12);
+  --glow2:0 0 55px rgba(0,180,255,.25);
+  --r:14px; --ease:cubic-bezier(.4,0,.2,1);
+}
+[data-theme="light"] {
+  --bg:#f2f6fb; --bg2:#e8eff8; --bg3:#dde7f4;
+  --sf:#fff; --sf2:#f5f8fd;
+  --bd:rgba(0,80,180,.12); --bd2:rgba(0,80,180,.22);
+  --ac:#0066cc; --ac2:#0033aa; --gr:#009944;
+  --tx:#0a1828; --tx2:#2a5880; --tx3:#6a90b0;
+  --glow:0 4px 24px rgba(0,80,180,.08);
+  --glow2:0 8px 40px rgba(0,80,180,.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--tx);overflow-x:hidden;line-height:1.6}
+::selection{background:var(--ac);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+ul{list-style:none}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--ac);border-radius:2px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 5%;background:rgba(3,8,15,.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd);transition:padding .3s var(--ease)}
+[data-theme="light"] nav{background:rgba(242,246,251,.92)}
+.logo{font-family:'Space Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--ac);letter-spacing:.04em;user-select:none;display:flex;align-items:center;gap:7px}
+.logo-dot{width:7px;height:7px;border-radius:50%;background:var(--gr);box-shadow:0 0 8px var(--gr);animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.75)}}
+.nav-links{display:flex;gap:1.8rem;align-items:center}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--tx3);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative;padding-bottom:3px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--ac);transition:width .3s var(--ease)}
+.nav-links a:hover,.nav-links a.active{color:var(--ac)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:.8rem}
+.btn-nav{font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:8px 16px;border-radius:8px;background:rgba(0,180,255,.1);border:1px solid rgba(0,180,255,.25);color:var(--ac);cursor:pointer;transition:all .2s;letter-spacing:.06em}
+.btn-nav:hover{background:rgba(0,180,255,.2);box-shadow:var(--glow)}
+.theme-btn{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sf);border:1px solid var(--bd);color:var(--tx2);cursor:pointer;font-size:.95rem;transition:all .2s}
+.theme-btn:hover{border-color:var(--ac);color:var(--ac)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--tx);border-radius:2px;transition:all .3s var(--ease)}
+.mob-nav{display:none;position:fixed;inset:0;top:68px;z-index:199;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mob-nav.open{display:flex}
+.mob-nav a{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--tx2);transition:color .2s}
+.mob-nav a:hover{color:var(--ac)}
+
+/* ── HERO ── */
+#home{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 5% 80px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 70% 30%,rgba(0,80,200,.07) 0%,transparent 65%),radial-gradient(ellipse 60% 60% at 10% 80%,rgba(0,180,255,.05) 0%,transparent 55%)}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,180,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,255,.025) 1px,transparent 1px);background-size:70px 70px}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 360px;gap:5rem;align-items:center;width:100%;max-width:1240px;margin:0 auto}
+.status-badge{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gr);border:1px solid rgba(0,232,122,.2);background:rgba(0,232,122,.05);padding:7px 16px;border-radius:30px;margin-bottom:1.8rem;animation:fadeUp .5s both}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--gr);box-shadow:0 0 8px var(--gr);animation:pulse 2s infinite}
+.hero-name{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,5.5vw,5.2rem);font-weight:800;line-height:1.0;letter-spacing:-.025em;margin-bottom:1.2rem;animation:fadeUp .5s .08s both}
+.hero-name .line{display:block}
+.hero-name .sub{color:var(--tx2);font-size:.52em;font-weight:600;letter-spacing:-.01em}
+.hero-typing{font-family:'JetBrains Mono',monospace;font-size:clamp(.8rem,1.3vw,.95rem);color:var(--ac);margin-bottom:1.4rem;letter-spacing:.02em;min-height:1.5em;animation:fadeUp .5s .16s both}
+.hero-typing::after{content:'▋';animation:blink .9s step-end infinite;margin-left:2px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-desc{font-size:1rem;color:var(--tx2);max-width:540px;line-height:1.9;margin-bottom:2.5rem;animation:fadeUp .5s .24s both}
+.hero-desc strong{color:var(--tx)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:1rem;animation:fadeUp .5s .32s both}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:2.5rem;animation:fadeUp .5s .4s both}
+.pill{font-family:'JetBrains Mono',monospace;font-size:.67rem;padding:5px 12px;border-radius:20px;letter-spacing:.06em;border:1px solid var(--bd);color:var(--tx3);background:var(--sf);transition:all .2s}
+.pill:hover{border-color:var(--ac);color:var(--ac)}
+.pill.green{border-color:rgba(0,232,122,.2);color:var(--gr);background:rgba(0,232,122,.04)}
+.pill.warn{border-color:rgba(255,170,0,.2);color:var(--wa);background:rgba(255,170,0,.04)}
+.hero-stats{display:flex;gap:3rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--bd);animation:fadeUp .5s .48s both}
+.stat-n{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--ac);line-height:1}
+.stat-l{font-family:'JetBrains Mono',monospace;font-size:.64rem;color:var(--tx3);text-transform:uppercase;letter-spacing:.1em;margin-top:5px}
+.hero-vis{animation:fadeUp .5s .16s both}
+.av-wrap{position:relative;width:300px;height:360px;margin:0 auto}
+.av-ring{position:absolute;inset:-24px;border:1px dashed rgba(0,180,255,.14);border-radius:50%;animation:spin 24s linear infinite}
+.av-ring-dot{position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--ac);box-shadow:0 0 12px var(--ac)}
+.av-blob{position:absolute;inset:0;border-radius:42% 58% 58% 42%/42% 42% 58% 58%;background:linear-gradient(135deg,var(--ac2),var(--ac));opacity:.12;animation:morph 9s ease-in-out infinite}
+.av-img{position:absolute;inset:22px;border-radius:42% 58% 58% 42%/42% 42% 58% 58%;overflow:hidden;border:1px solid var(--bd2);animation:morph 9s ease-in-out infinite;background:var(--sf2);display:flex;align-items:center;justify-content:center;font-size:5rem}
+.av-img img{width:100%;height:100%;object-fit:cover}
+.av-card{position:absolute;bottom:10px;right:-30px;background:var(--sf);border:1px solid var(--bd2);border-radius:12px;padding:12px 16px;box-shadow:var(--glow2);font-family:'JetBrains Mono',monospace;font-size:.68rem}
+.av-card-val{color:var(--gr);font-weight:600;margin-bottom:2px}
+.av-card-lbl{color:var(--tx3)}
+.av-card2{position:absolute;top:20px;left:-30px;background:var(--sf);border:1px solid var(--bd2);border-radius:12px;padding:10px 14px;box-shadow:var(--glow);font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--ac)}
+@keyframes morph{0%,100%{border-radius:42% 58% 58% 42%/42% 42% 58% 58%}33%{border-radius:58% 42% 42% 58%/58% 58% 42% 42%}66%{border-radius:50% 50% 68% 32%/32% 68% 50% 50%}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.06em;padding:12px 26px;border-radius:10px;cursor:pointer;transition:all .22s var(--ease);border:none;font-weight:500}
+.btn-p{background:var(--ac);color:var(--bg);box-shadow:0 0 28px rgba(0,180,255,.28)}
+.btn-p:hover{background:#33c8ff;box-shadow:0 0 44px rgba(0,180,255,.44);transform:translateY(-2px)}
+.btn-g{background:transparent;color:var(--tx);border:1px solid var(--bd2)}
+.btn-g:hover{border-color:var(--ac);color:var(--ac);box-shadow:var(--glow);transform:translateY(-2px)}
+.btn-gr{background:rgba(0,232,122,.1);color:var(--gr);border:1px solid rgba(0,232,122,.22)}
+.btn-gr:hover{background:rgba(0,232,122,.18);transform:translateY(-2px)}
+
+/* ── SECTIONS ── */
+section{padding:100px 5%}
+.wrap{max-width:1240px;margin:0 auto}
+.s-tag{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--ac);text-transform:uppercase;letter-spacing:.18em;margin-bottom:.8rem}
+.s-tag::before{content:'// ';color:var(--tx3)}
+h2{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:800;line-height:1.08;letter-spacing:-.022em;margin-bottom:1.4rem}
+h2 .acc{color:var(--ac)}
+.divider{width:56px;height:3px;background:linear-gradient(90deg,var(--ac),transparent);margin-bottom:3rem;border-radius:2px}
+
+/* ── ABOUT ── */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-text p{color:var(--tx2);line-height:1.9;margin-bottom:1.2rem}
+.about-text p strong{color:var(--tx)}
+.timeline{margin-top:1.5rem}
+.tl-item{position:relative;padding-left:1.8rem;margin-bottom:1.8rem;border-left:1px solid var(--bd2)}
+.tl-item::before{content:'';position:absolute;left:-5px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--ac);box-shadow:0 0 10px var(--ac)}
+.tl-yr{font-family:'JetBrains Mono',monospace;font-size:.69rem;color:var(--ac);letter-spacing:.1em;margin-bottom:3px}
+.tl-title{font-weight:700;font-size:.96rem;margin-bottom:3px}
+.tl-org{font-size:.84rem;color:var(--tx2)}
+.sk-h{font-size:.92rem;font-weight:700;margin-bottom:1rem;margin-top:1.8rem;color:var(--tx)}
+.sk-h:first-child{margin-top:0}
+.sk-item{margin-bottom:.9rem}
+.sk-row{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--tx2);margin-bottom:5px}
+.sk-bar{height:3px;background:var(--sf2);border-radius:2px;overflow:hidden}
+.sk-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--ac2),var(--ac));width:var(--w)}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:5px 11px;border:1px solid var(--bd);border-radius:5px;color:var(--tx2);background:var(--sf);transition:all .2s}
+.tag:hover{border-color:var(--ac);color:var(--ac)}
+.tag.g{border-color:rgba(0,232,122,.2);color:var(--gr);background:rgba(0,232,122,.04)}
+.tag.w{border-color:rgba(255,170,0,.2);color:var(--wa);background:rgba(255,170,0,.04)}
+.certs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:1rem}
+.cert-card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:14px;display:flex;align-items:center;gap:10px;transition:all .2s}
+.cert-card:hover{border-color:var(--ac);box-shadow:var(--glow)}
+.cert-ico{font-size:1.3rem;flex-shrink:0}
+.cert-name{font-size:.8rem;font-weight:700;margin-bottom:2px}
+.cert-by{font-size:.67rem;color:var(--tx3);font-family:'JetBrains Mono',monospace}
+
+/* ── PROJECTS ── */
+#projects{background:var(--bg)}
+.filt{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:2.5rem}
+.filt-btn{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.07em;padding:7px 16px;border-radius:4px;border:1px solid var(--bd);background:transparent;color:var(--tx3);cursor:pointer;transition:all .2s}
+.filt-btn:hover,.filt-btn.on{border-color:var(--ac);color:var(--ac);background:rgba(0,180,255,.06)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.4rem}
+.proj-card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;transition:all .28s var(--ease)}
+.proj-card:hover{transform:translateY(-6px);border-color:var(--bd2);box-shadow:var(--glow2)}
+.proj-img{height:155px;background:linear-gradient(135deg,var(--sf2),var(--bg3));display:flex;align-items:center;justify-content:center;position:relative;font-size:3.2rem}
+.proj-badge{position:absolute;top:11px;right:11px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;padding:4px 10px;border-radius:4px;text-transform:uppercase}
+.pb-devops{background:rgba(255,170,0,.12);color:var(--wa);border:1px solid rgba(255,170,0,.2)}
+.pb-net{background:rgba(0,180,255,.1);color:var(--ac);border:1px solid var(--bd)}
+.pb-sys{background:rgba(0,232,122,.1);color:var(--gr);border:1px solid rgba(0,232,122,.2)}
+.pb-cyber{background:rgba(255,68,85,.12);color:var(--da);border:1px solid rgba(255,68,85,.2)}
+.proj-body{padding:22px}
+.proj-title{font-size:1rem;font-weight:700;margin-bottom:7px}
+.proj-desc{font-size:.83rem;color:var(--tx2);line-height:1.75;margin-bottom:13px}
+.proj-tech{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:15px}
+.ptag{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:3px 7px;background:var(--bg3);border-radius:3px;color:var(--tx3)}
+.proj-links{display:flex;gap:8px}
+.plink{display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--tx3);padding:6px 12px;border:1px solid var(--bd);border-radius:6px;transition:all .2s}
+.plink:hover{color:var(--ac);border-color:var(--ac)}
+
+/* ── BLOG ── */
+#blog{background:var(--bg2)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem}
+.blog-card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;transition:all .28s var(--ease);cursor:pointer}
+.blog-card:hover{transform:translateY(-5px);border-color:var(--bd2);box-shadow:var(--glow)}
+.blog-thumb{height:130px;background:linear-gradient(135deg,var(--sf2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:2.2rem;position:relative}
+.blog-cat{position:absolute;top:11px;left:11px;font-family:'JetBrains Mono',monospace;font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:3px;background:rgba(0,180,255,.1);color:var(--ac);border:1px solid var(--bd)}
+.blog-body{padding:20px}
+.blog-date{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--tx3);margin-bottom:7px}
+.blog-title{font-size:.95rem;font-weight:700;margin-bottom:7px;line-height:1.4}
+.blog-exc{font-size:.82rem;color:var(--tx2);line-height:1.75;margin-bottom:14px}
+.read-more{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--ac);display:inline-flex;align-items:center;gap:5px;transition:gap .2s}
+.blog-card:hover .read-more{gap:9px}
+
+/* ── CV ── */
+#cv{background:var(--bg)}
+.cv-wrap{display:grid;grid-template-columns:270px 1fr;gap:3rem;align-items:start}
+.cv-side{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:28px 22px;position:sticky;top:90px}
+.cv-av{width:78px;height:78px;border-radius:50%;background:linear-gradient(135deg,var(--ac2),var(--ac));margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:1.8rem;overflow:hidden}
+.cv-av img{width:100%;height:100%;object-fit:cover}
+.cv-nm{text-align:center;font-size:1.05rem;font-weight:800;margin-bottom:3px}
+.cv-role{text-align:center;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--ac);margin-bottom:1.5rem;letter-spacing:.04em}
+.cv-sep{height:1px;background:var(--bd);margin:1.1rem 0}
+.cv-st{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--tx3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.9rem}
+.cv-ci{display:flex;align-items:center;gap:9px;font-size:.78rem;color:var(--tx2);margin-bottom:8px}
+.cv-ci-ic{font-size:.85rem;width:18px;text-align:center;flex-shrink:0}
+.cv-ci a:hover{color:var(--ac)}
+.cv-li{margin-bottom:9px}
+.cv-ln{font-size:.8rem;margin-bottom:4px;display:flex;justify-content:space-between}
+.cv-ll{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--tx3)}
+.cv-blk{margin-bottom:2.5rem}
+.cv-blk-t{font-size:.98rem;font-weight:700;padding-bottom:10px;margin-bottom:1.4rem;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:9px}
+.cv-entry{margin-bottom:1.8rem;padding-left:1rem;border-left:2px solid var(--bd);transition:border-color .2s}
+.cv-entry:hover{border-left-color:var(--ac)}
+.cv-eh{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:7px;margin-bottom:5px}
+.cv-et{font-size:.95rem;font-weight:700}
+.cv-ep{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--ac);padding:2px 8px;border:1px solid rgba(0,180,255,.2);border-radius:3px;white-space:nowrap}
+.cv-eo{font-size:.82rem;color:var(--tx2);margin-bottom:7px}
+.cv-ed{font-size:.82rem;color:var(--tx2);line-height:1.75}
+.cv-ed li{margin-bottom:4px;padding-left:.9rem;position:relative}
+.cv-ed li::before{content:'›';position:absolute;left:0;color:var(--ac)}
+.cv-dl{display:flex;align-items:center;justify-content:center;margin-top:2.5rem;gap:1rem;flex-wrap:wrap}
+
+/* ── CONTACT ── */
+#contact{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-info h3{font-size:1.3rem;font-weight:700;margin-bottom:1rem}
+.contact-info > p{color:var(--tx2);line-height:1.85;margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;gap:.9rem}
+.c-link{display:flex;align-items:center;gap:14px;padding:15px 19px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);transition:all .2s}
+.c-link:hover{border-color:var(--bd2);box-shadow:var(--glow);transform:translateX(4px)}
+.c-link-ic{width:42px;height:42px;border-radius:9px;background:var(--bg3);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.c-link-t{flex:1;min-width:0}
+.c-link-lbl{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--tx3);margin-bottom:2px;text-transform:uppercase;letter-spacing:.08em}
+.c-link-val{font-size:.88rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-link-arr{color:var(--tx3);transition:color .2s}
+.c-link:hover .c-link-arr{color:var(--ac)}
+.c-form{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1.8rem}
+.form-g{margin-bottom:1.1rem}
+label{display:block;font-family:'JetBrains Mono',monospace;font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--tx3);margin-bottom:5px}
+input,textarea,select{width:100%;background:var(--bg3);border:1px solid var(--bd);border-radius:8px;color:var(--tx);font-family:'Syne',sans-serif;font-size:.88rem;padding:11px 14px;transition:border-color .2s;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(0,180,255,.07)}
+textarea{resize:vertical;min-height:115px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-ok{display:none;text-align:center;padding:2rem;font-family:'JetBrains Mono',monospace;color:var(--gr)}
+
+/* ── FOOTER ── */
+footer{padding:3rem 5%;background:var(--bg);border-top:1px solid var(--bd);text-align:center}
+.foot-inner{max-width:1240px;margin:0 auto}
+.foot-logo{font-family:'Space Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--ac);margin-bottom:.6rem}
+.foot-text{font-size:.8rem;color:var(--tx3);margin-bottom:1.5rem}
+.foot-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
+.foot-links a{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em;transition:color .2s}
+.foot-links a:hover{color:var(--ac)}
+.foot-bottom{padding-top:1.5rem;border-top:1px solid var(--bd);font-family:'JetBrains Mono',monospace;font-size:.64rem;color:var(--tx3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-vis{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .cv-wrap{grid-template-columns:1fr}
+  .cv-side{position:static}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  section{padding:70px 5%}
+  .proj-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .hero-stats{gap:1.8rem}
+  .certs{grid-template-columns:1fr}
+  .foot-bottom{flex-direction:column;align-items:center;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="logo"><div class="logo-dot"></div>Ahamed19i</div>
+  <div class="nav-links">
+    <a href="#home">Accueil</a>
+    <a href="#about">Profil</a>
+    <a href="#projects">Projets</a>
+    <a href="#blog">Blog</a>
+    <a href="#cv">CV</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+    <a href="assets/files/cv_ahamed_hassani.pdf" download class="btn-nav">↓ CV</a>
+    <button class="hamburger" onclick="toggleMenu()" id="ham">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="#home" onclick="toggleMenu()">Accueil</a>
+  <a href="#about" onclick="toggleMenu()">Profil</a>
+  <a href="#projects" onclick="toggleMenu()">Projets</a>
+  <a href="#blog" onclick="toggleMenu()">Blog</a>
+  <a href="#cv" onclick="toggleMenu()">CV</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="grid-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        Disponible — Recherche de stage / alternance
+      </div>
+      <h1 class="hero-name">
+        <span class="line">Ahamed Hassani</span>
+        <span class="line sub">Ingénieur Systèmes, Réseaux &amp; Cloud</span>
+      </h1>
+      <p class="hero-typing" id="typeLine"></p>
+      <p class="hero-desc">
+        Ingénieur en <strong>Master 2 Systèmes &amp; Réseaux</strong> à l'AFI-Université (Dakar).
+        Spécialisé en <strong>Linux / Windows Server</strong>, virtualisation, cloud DevOps.
+        Expériences chez <strong>Sonatel</strong> (Orange) et <strong>Tunisie Télécom</strong>.
+        Perspective cybersécurité des infrastructures.
+      </p>
+      <div class="hero-cta">
+        <a href="assets/files/cv_ahamed_hassani.pdf" download class="btn btn-p">📄 Télécharger mon CV</a>
+        <a href="#projects" class="btn btn-g">🚀 Mes projets</a>
+        <a href="#contact" class="btn btn-gr">✉️ Me contacter</a>
+      </div>
+      <div class="hero-pills">
+        <span class="pill green">🐧 Linux</span>
+        <span class="pill">🪟 Windows Server</span>
+        <span class="pill">☁️ Cloud / AWS</span>
+        <span class="pill">🐳 Docker</span>
+        <span class="pill">⚙️ Ansible</span>
+        <span class="pill warn">🛡️ Cybersécurité</span>
+        <span class="pill">🔀 CI/CD</span>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-n">M2</div><div class="stat-l">Niveau Ingénieur</div></div>
+        <div><div class="stat-n">2+</div><div class="stat-l">Expériences pro</div></div>
+        <div><div class="stat-n">5+</div><div class="stat-l">Projets infra</div></div>
+        <div><div class="stat-n">3</div><div class="stat-l">Pays / Univ.</div></div>
+      </div>
+    </div>
+    <div class="hero-vis">
+      <div class="av-wrap">
+        <div class="av-ring"><div class="av-ring-dot"></div></div>
+        <div class="av-blob"></div>
+        <div class="av-img">
+          <!-- <img src="assets/img/photo.jpg" alt="Ahamed Hassani"> -->
+          👨🏾‍💻
+        </div>
+        <div class="av-card">
+          <div class="av-card-val">🟢 Open to work</div>
+          <div class="av-card-lbl">Stage / Alternance 2026</div>
+        </div>
+        <div class="av-card2">☁️ DevOps · Cloud · Linux</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFIL -->
+<section id="about">
+  <div class="wrap">
+    <p class="s-tag">01 — Profil</p>
+    <h2>Mon <span class="acc">expertise</span></h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div>
+        <div class="about-text">
+          <p>Je suis <strong>Ahamed Hassani Mhoma</strong>, ingénieur <strong>M2 Systèmes &amp; Réseaux</strong> spécialisé dans l'administration des infrastructures <strong>Linux/Windows Server</strong>, la virtualisation et le cloud. Mon parcours entre <strong>Tunis et Dakar</strong> m'a forgé une vision internationale solide.</p>
+          <p>Ma philosophie : automatiser ce qui peut l'être, sécuriser ce qui doit l'être. Je m'oriente vers le <strong>DevOps et Cloud Engineering</strong>, avec une couche cybersécurité en développement actif.</p>
+          <p>Expérimenté chez <strong>Sonatel</strong> (groupe Orange, Sénégal) et <strong>Tunisie Télécom</strong>, j'ai une compréhension opérationnelle des environnements télécoms à grande échelle.</p>
+        </div>
+        <div class="sk-h" style="margin-top:2rem">🎓 Parcours académique</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-yr">2024 – en cours · Dakar</div>
+            <div class="tl-title">Master 2 — Systèmes, Réseaux &amp; Télécommunications</div>
+            <div class="tl-org">AFI-Université de l'Entreprise</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-yr">2023 – 2024 · Dakar</div>
+            <div class="tl-title">Licence — Génie Logiciel &amp; Systèmes d'Information</div>
+            <div class="tl-org">MIT Dakar</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-yr">2021 – 2023 · Tunis</div>
+            <div class="tl-title">Licence — Génie Logiciel &amp; SI</div>
+            <div class="tl-org">Université Centrale de Tunis</div>
+          </div>
+        </div>
+        <div class="sk-h" style="margin-top:2rem">📜 Certifications</div>
+        <div class="certs">
+          <div class="cert-card"><div class="cert-ico">🐧</div><div><div class="cert-name">Linux Administration</div><div class="cert-by">AFI-UE · 2024</div></div></div>
+          <div class="cert-card"><div class="cert-ico">🌐</div><div><div class="cert-name">Réseaux &amp; Systèmes</div><div class="cert-by">AFI-UE · 2024</div></div></div>
+          <div class="cert-card"><div class="cert-ico">🛡️</div><div><div class="cert-name">Cybersécurité &amp; Virt.</div><div class="cert-by">AFI-UE · 2024</div></div></div>
+          <div class="cert-card"><div class="cert-ico">☁️</div><div><div class="cert-name">Cloud &amp; DevOps</div><div class="cert-by">En cours · 2026</div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sk-h">Infrastructure &amp; Systèmes</div>
+        <div class="sk-item"><div class="sk-row"><span>Linux (Ubuntu, Debian, CentOS)</span><span>90%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:90%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span>Windows Server / Active Directory</span><span>82%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:82%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span>VMware vSphere / VirtualBox / KVM</span><span>87%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:87%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span>Docker / Docker Compose</span><span>82%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:82%"></div></div></div>
+        <div class="sk-h">Réseaux &amp; Services</div>
+        <div class="sk-item"><div class="sk-row"><span>TCP/IP · DNS · DHCP · VLAN · Routage</span><span>87%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:87%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span>Cisco (Packet Tracer, GNS3)</span><span>80%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:80%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span>VPN · Pare-feu · Wireshark</span><span>78%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:78%"></div></div></div>
+        <div class="sk-h">DevOps &amp; Cloud</div>
+        <div class="sk-item"><div class="sk-row"><span>Git / GitHub · CI/CD</span><span>85%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:85%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span>Ansible (automatisation)</span><span>72%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:72%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span>AWS / Cloud (en progression)</span><span>65%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:65%"></div></div></div>
+        <div class="sk-h">Cybersécurité</div>
+        <div class="sk-item"><div class="sk-row"><span>Hardening Linux / Windows</span><span>76%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:76%"></div></div></div>
+        <div class="sk-item"><div class="sk-row"><span>Analyse réseau / IDS</span><span>70%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:70%"></div></div></div>
+        <div class="sk-h" style="margin-top:1.8rem">Langages</div>
+        <div class="tags" style="margin-bottom:1.5rem">
+          <span class="tag">Python</span><span class="tag">Bash / Shell</span><span class="tag">Java</span><span class="tag">SQL / MySQL</span><span class="tag">YAML</span><span class="tag">PowerShell</span>
+        </div>
+        <div class="sk-h">Langues</div>
+        <div class="tags">
+          <span class="tag g">🇫🇷 Français — Courant</span>
+          <span class="tag">🇬🇧 Anglais — Professionnel</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projects">
+  <div class="wrap">
+    <p class="s-tag">02 — Projets</p>
+    <h2>Mes <span class="acc">réalisations</span></h2>
+    <div class="divider"></div>
+    <div class="filt">
+      <button class="filt-btn on" data-f="all">Tous</button>
+      <button class="filt-btn" data-f="sys">Virtualisation</button>
+      <button class="filt-btn" data-f="devops">DevOps / Cloud</button>
+      <button class="filt-btn" data-f="net">Réseaux</button>
+      <button class="filt-btn" data-f="cyber">Cybersécurité</button>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card" data-c="sys">
+        <div class="proj-img">🖥️<span class="proj-badge pb-sys">Virtualisation</span></div>
+        <div class="proj-body">
+          <div class="proj-title">Infrastructure Virtualisée — DHCP, DNS, AD</div>
+          <div class="proj-desc">Déploiement complet VMware : serveurs Linux DHCP/DNS, Active Directory Windows Server 2022, simulation réseau sécurisée Cisco Packet Tracer.</div>
+          <div class="proj-tech"><span class="ptag">VMware</span><span class="ptag">Linux</span><span class="ptag">DHCP/DNS</span><span class="ptag">Windows Server</span><span class="ptag">Cisco</span></div>
+          <div class="proj-links"><a href="https://github.com/ahamed19i" target="_blank" class="plink">⚡ GitHub</a></div>
+        </div>
+      </div>
+      <div class="proj-card" data-c="devops">
+        <div class="proj-img">🐳<span class="proj-badge pb-devops">DevOps</span></div>
+        <div class="proj-body">
+          <div class="proj-title">Conteneurisation &amp; Pipeline CI/CD</div>
+          <div class="proj-desc">Stack Docker Compose (Nginx, MySQL, Python), pipeline CI/CD GitHub Actions, build Docker Hub, déploiement automatique VPS Linux via SSH.</div>
+          <div class="proj-tech"><span class="ptag">Docker</span><span class="ptag">GitHub Actions</span><span class="ptag">Nginx</span><span class="ptag">Python</span><span class="ptag">Bash</span></div>
+          <div class="proj-links"><a href="https://github.com/ahamed19i" target="_blank" class="plink">⚡ GitHub</a></div>
+        </div>
+      </div>
+      <div class="proj-card" data-c="net">
+        <div class="proj-img">🌐<span class="proj-badge pb-net">Réseaux</span></div>
+        <div class="proj-body">
+          <div class="proj-title">Architecture Réseau d'Entreprise — GNS3</div>
+          <div class="proj-desc">Simulation réseau multi-sites : routage OSPF, segmentation VLAN, ACL, NAT et redondance HSRP sur Cisco Packet Tracer et GNS3.</div>
+          <div class="proj-tech"><span class="ptag">Cisco IOS</span><span class="ptag">OSPF</span><span class="ptag">VLAN</span><span class="ptag">GNS3</span><span class="ptag">HSRP</span></div>
+          <div class="proj-links"><a href="https://github.com/ahamed19i" target="_blank" class="plink">⚡ GitHub</a></div>
+        </div>
+      </div>
+      <div class="proj-card" data-c="sys">
+        <div class="proj-img">🪟<span class="proj-badge pb-sys">Systèmes</span></div>
+        <div class="proj-body">
+          <div class="proj-title">Active Directory &amp; GPO — Windows Server 2022</div>
+          <div class="proj-desc">Domaine AD complet avec GPO de sécurité, DHCP intégré, DNS Windows Server et intégration Linux via Samba dans un environnement VMware.</div>
+          <div class="proj-tech"><span class="ptag">Windows Server 2022</span><span class="ptag">Active Directory</span><span class="ptag">GPO</span><span class="ptag">VMware</span><span class="ptag">DNS/DHCP</span></div>
+          <div class="proj-links"><a href="https://github.com/ahamed19i" target="_blank" class="plink">⚡ GitHub</a></div>
+        </div>
+      </div>
+      <div class="proj-card" data-c="devops">
+        <div class="proj-img">⚙️<span class="proj-badge pb-devops">Automatisation</span></div>
+        <div class="proj-body">
+          <div class="proj-title">Automatisation Infrastructure avec Ansible</div>
+          <div class="proj-desc">Playbooks Ansible pour déploiement automatisé de serveurs Linux : SSH, paquets, hardening de base, gestion des utilisateurs et rôles réutilisables.</div>
+          <div class="proj-tech"><span class="ptag">Ansible</span><span class="ptag">YAML</span><span class="ptag">Linux</span><span class="ptag">SSH</span><span class="ptag">Python</span></div>
+          <div class="proj-links"><a href="https://github.com/ahamed19i" target="_blank" class="plink">⚡ GitHub</a></div>
+        </div>
+      </div>
+      <div class="proj-card" data-c="cyber">
+        <div class="proj-img">🛡️<span class="proj-badge pb-cyber">Cybersécurité</span></div>
+        <div class="proj-body">
+          <div class="proj-title">Lab Sécurité — Hardening &amp; Audit</div>
+          <div class="proj-desc">Kali Linux : analyse de trafic Wireshark, pare-feu iptables/pfSense, VPN WireGuard et checklist de hardening Linux complète.</div>
+          <div class="proj-tech"><span class="ptag">Wireshark</span><span class="ptag">iptables</span><span class="ptag">pfSense</span><span class="ptag">WireGuard</span><span class="ptag">Kali Linux</span></div>
+          <div class="proj-links"><a href="https://github.com/ahamed19i" target="_blank" class="plink">⚡ GitHub</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="wrap">
+    <p class="s-tag">03 — Blog</p>
+    <h2>Tutoriels &amp; <span class="acc">Veille tech</span></h2>
+    <div class="divider"></div>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-thumb">🐧<span class="blog-cat">Linux</span></div>
+        <div class="blog-body">
+          <div class="blog-date">Janvier 2026</div>
+          <div class="blog-title">Hardening Linux en production : la checklist complète 2026</div>
+          <div class="blog-exc">SSH, iptables, SELinux, auditd, fail2ban... Sécurisez vos serveurs Linux pas à pas avec cette checklist opérationnelle.</div>
+          <a href="#" class="read-more">Lire →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb">🐳<span class="blog-cat">Docker</span></div>
+        <div class="blog-body">
+          <div class="blog-date">Décembre 2025</div>
+          <div class="blog-title">Docker Compose : déployer une stack web complète en 15 minutes</div>
+          <div class="blog-exc">Nginx + PHP + MySQL + PHPMyAdmin avec Docker Compose. Guide pratique avec volumes et réseaux personnalisés.</div>
+          <a href="#" class="read-more">Lire →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb">🪟<span class="blog-cat">Windows Server</span></div>
+        <div class="blog-body">
+          <div class="blog-date">Novembre 2025</div>
+          <div class="blog-title">Active Directory from scratch : déployer un domaine Windows Server 2022</div>
+          <div class="blog-exc">Installation AD DS, promotion en contrôleur de domaine, création d'UO et application de GPO.</div>
+          <a href="#" class="read-more">Lire →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb">⚙️<span class="blog-cat">Ansible</span></div>
+        <div class="blog-body">
+          <div class="blog-date">Octobre 2025</div>
+          <div class="blog-title">Automatiser la configuration de serveurs Linux avec Ansible</div>
+          <div class="blog-exc">Inventory, playbooks, rôles et handlers. Automatisez la mise à jour et le hardening de vos serveurs.</div>
+          <a href="#" class="read-more">Lire →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb">🌐<span class="blog-cat">Réseaux</span></div>
+        <div class="blog-body">
+          <div class="blog-date">Septembre 2025</div>
+          <div class="blog-title">VLAN et routage inter-VLAN sur Cisco : guide complet</div>
+          <div class="blog-exc">Segmentez votre réseau avec les VLAN, configurez le routage inter-VLAN avec un switch L3 Cisco.</div>
+          <a href="#" class="read-more">Lire →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb">☁️<span class="blog-cat">Cloud</span></div>
+        <div class="blog-body">
+          <div class="blog-date">Août 2025</div>
+          <div class="blog-title">Premiers pas avec AWS EC2 : lancer et sécuriser une instance Linux</div>
+          <div class="blog-exc">Créer une instance EC2, configurer Security Groups, SSH et installer Nginx — le guide débutant cloud.</div>
+          <a href="#" class="read-more">Lire →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <div class="wrap">
+    <p class="s-tag">04 — Curriculum Vitae</p>
+    <h2>Mon <span class="acc">CV</span> en ligne</h2>
+    <div class="divider"></div>
+    <div class="cv-wrap">
+      <div class="cv-side">
+        <div class="cv-av">👨🏾‍💻</div>
+        <div class="cv-nm">Ahamed Hassani Mhoma</div>
+        <div class="cv-role">Ingénieur M2 · Systèmes &amp; Réseaux</div>
+        <div class="cv-sep"></div>
+        <div class="cv-st">Contact</div>
+        <div class="cv-ci"><span class="cv-ci-ic">📍</span>Médina, Dakar — Sénégal 🇸🇳</div>
+        <div class="cv-ci"><span class="cv-ci-ic">📞</span>+221 78 794 27 29</div>
+        <div class="cv-ci"><span class="cv-ci-ic">📧</span><a href="mailto:ahassanimhoma20@gmail.com">ahassanimhoma20@gmail.com</a></div>
+        <div class="cv-ci"><span class="cv-ci-ic">💻</span><a href="https://github.com/ahamed19i" target="_blank">github.com/ahamed19i</a></div>
+        <div class="cv-sep"></div>
+        <div class="cv-st">Langues</div>
+        <div class="cv-li">
+          <div class="cv-ln">Français <span class="cv-ll">Courant</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="--w:95%;background:var(--gr)"></div></div>
+        </div>
+        <div class="cv-li">
+          <div class="cv-ln">Anglais <span class="cv-ll">Professionnel</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="--w:72%"></div></div>
+        </div>
+        <div class="cv-sep"></div>
+        <div class="cv-st">Stack principal</div>
+        <div class="tags" style="gap:6px;margin-top:.5rem">
+          <span class="tag" style="font-size:.65rem">Linux</span>
+          <span class="tag" style="font-size:.65rem">VMware</span>
+          <span class="tag" style="font-size:.65rem">Docker</span>
+          <span class="tag" style="font-size:.65rem">Ansible</span>
+          <span class="tag" style="font-size:.65rem">Cisco</span>
+          <span class="tag" style="font-size:.65rem">AWS</span>
+          <span class="tag" style="font-size:.65rem">Python</span>
+          <span class="tag" style="font-size:.65rem">Git</span>
+        </div>
+      </div>
+      <div>
+        <div class="cv-blk">
+          <div class="cv-blk-t">🎓 Formation</div>
+          <div class="cv-entry">
+            <div class="cv-eh"><div class="cv-et">Master 2 — Systèmes, Réseaux &amp; Télécommunications</div><div class="cv-ep">2024 – 2026</div></div>
+            <div class="cv-eo">AFI-Université de l'Entreprise · Dakar, Sénégal</div>
+            <ul class="cv-ed">
+              <li>Administration systèmes Linux / Windows Server, virtualisation VMware</li>
+              <li>Architecture réseau avancée, SDN, protocoles OSPF / BGP</li>
+              <li>Sécurité des SI, cryptographie, IDS/IPS</li>
+            </ul>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-eh"><div class="cv-et">Licence — Génie Logiciel &amp; Systèmes d'Information</div><div class="cv-ep">2023 – 2024</div></div>
+            <div class="cv-eo">MIT Dakar · Dakar, Sénégal</div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-eh"><div class="cv-et">Licence — Génie Logiciel &amp; Systèmes d'Information</div><div class="cv-ep">2021 – 2023</div></div>
+            <div class="cv-eo">Université Centrale de Tunis · Tunis, Tunisie</div>
+            <ul class="cv-ed">
+              <li>POO avancée (Java, Python), algorithmes et structures de données</li>
+              <li>Bases de données relationnelles, modélisation UML</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cv-blk">
+          <div class="cv-blk-t">🛠️ Compétences techniques</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+            <div>
+              <div style="font-size:.7rem;color:var(--tx3);font-family:'JetBrains Mono',monospace;margin-bottom:.7rem;text-transform:uppercase;letter-spacing:.08em">Infrastructure</div>
+              <div class="tags"><span class="tag">Linux</span><span class="tag">Windows Server</span><span class="tag">Active Directory</span><span class="tag">VMware</span><span class="tag">Docker</span><span class="tag">KVM</span></div>
+            </div>
+            <div>
+              <div style="font-size:.7rem;color:var(--tx3);font-family:'JetBrains Mono',monospace;margin-bottom:.7rem;text-transform:uppercase;letter-spacing:.08em">DevOps &amp; Cloud</div>
+              <div class="tags"><span class="tag">Ansible</span><span class="tag">Git/GitHub</span><span class="tag">CI/CD</span><span class="tag">AWS</span><span class="tag">Docker Compose</span><span class="tag">Bash</span></div>
+            </div>
+            <div>
+              <div style="font-size:.7rem;color:var(--tx3);font-family:'JetBrains Mono',monospace;margin-bottom:.7rem;text-transform:uppercase;letter-spacing:.08em">Réseaux</div>
+              <div class="tags"><span class="tag">TCP/IP</span><span class="tag">OSPF/BGP</span><span class="tag">VLAN</span><span class="tag">Cisco IOS</span><span class="tag">Wireshark</span><span class="tag">GNS3</span></div>
+            </div>
+            <div>
+              <div style="font-size:.7rem;color:var(--tx3);font-family:'JetBrains Mono',monospace;margin-bottom:.7rem;text-transform:uppercase;letter-spacing:.08em">Cybersécurité</div>
+              <div class="tags"><span class="tag">iptables/pfSense</span><span class="tag">VPN</span><span class="tag">Hardening</span><span class="tag">IDS</span><span class="tag">Cryptographie</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="cv-dl">
+          <a href="assets/files/cv_ahamed_hassani.pdf" download class="btn btn-p">📄 Télécharger le CV (PDF)</a>
+          <a href="assets/files/cv_ahamed_hassani.pdf" target="_blank" class="btn btn-g">👁️ Voir le PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <p class="s-tag">05 — Contact</p>
+    <h2>Travaillons <span class="acc">ensemble</span></h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Je suis ouvert aux opportunités</h3>
+        <p>Recruteur, professionnel IT ou simplement curieux ? Je recherche activement un <strong>stage ou alternance</strong> en systèmes, réseaux, DevOps ou cloud. Réponse garantie en moins de 24h.</p>
+        <div class="contact-links">
+          <a href="mailto:ahassanimhoma20@gmail.com" class="c-link">
+            <div class="c-link-ic">📧</div>
+            <div class="c-link-t"><div class="c-link-lbl">Email</div><div class="c-link-val">ahassanimhoma20@gmail.com</div></div>
+            <span class="c-link-arr">→</span>
+          </a>
+          <a href="tel:+221787942729" class="c-link">
+            <div class="c-link-ic">📞</div>
+            <div class="c-link-t"><div class="c-link-lbl">Téléphone</div><div class="c-link-val">+221 78 794 27 29</div></div>
+            <span class="c-link-arr">→</span>
+          </a>
+          <a href="https://github.com/ahamed19i" target="_blank" class="c-link">
+            <div class="c-link-ic">💻</div>
+            <div class="c-link-t"><div class="c-link-lbl">GitHub</div><div class="c-link-val">github.com/ahamed19i</div></div>
+            <span class="c-link-arr">→</span>
+          </a>
+          <a href="https://linkedin.com/in/ahamed-hassani-mhoma" target="_blank" class="c-link">
+            <div class="c-link-ic">💼</div>
+            <div class="c-link-t"><div class="c-link-lbl">LinkedIn</div><div class="c-link-val">Ahamed Hassani Mhoma</div></div>
+            <span class="c-link-arr">→</span>
+          </a>
+          <div class="c-link">
+            <div class="c-link-ic">📍</div>
+            <div class="c-link-t"><div class="c-link-lbl">Localisation</div><div class="c-link-val">Médina, Dakar 🇸🇳</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="c-form">
+        <div id="formContent">
+          <h3 style="font-size:1rem;margin-bottom:1.4rem">Envoyer un message</h3>
+          <div class="form-row">
+            <div class="form-g"><label>Prénom</label><input type="text" placeholder="Votre prénom"></div>
+            <div class="form-g"><label>Nom</label><input type="text" placeholder="Votre nom"></div>
+          </div>
+          <div class="form-g"><label>Email</label><input type="email" placeholder="votre@email.com"></div>
+          <div class="form-g">
+            <label>Objet</label>
+            <select>
+              <option>Proposition de stage</option>
+              <option>Opportunité professionnelle</option>
+              <option>Collaboration technique</option>
+              <option>Question sur un projet</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-g"><label>Message</label><textarea placeholder="Décrivez votre proposition..."></textarea></div>
+          <button class="btn btn-p" onclick="sendMsg()" style="width:100%;justify-content:center">✉️ Envoyer</button>
+        </div>
+        <div class="form-ok" id="formOk">
+          <div style="font-size:3rem;margin-bottom:.8rem">✅</div>
+          <div style="font-size:1.1rem;color:var(--tx);margin-bottom:.5rem">Message envoyé !</div>
+          <div style="font-size:.78rem;color:var(--tx3)">Je vous répondrai rapidement.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo">Ahamed19i</div>
+    <p class="foot-text">M2 Systèmes &amp; Réseaux · DevOps · Cloud · Linux · Dakar 🇸🇳</p>
+    <div class="foot-links">
+      <a href="#home">Accueil</a>
+      <a href="#about">Profil</a>
+      <a href="#projects">Projets</a>
+      <a href="#blog">Blog</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Ahamed Hassani Mhoma. Tous droits réservés.</span>
+      <span style="color:var(--ac);font-family:'Space Mono',monospace">Built from Dakar 🇸🇳 with ❤️</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Theme toggle ──
+let dark = true;
+function toggleTheme() {
+  dark = !dark;
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('themeBtn').textContent = dark ? '🌙' : '☀️';
+}
+
+// ── Mobile menu ──
+function toggleMenu() {
+  const nav = document.getElementById('mobNav');
+  const ham = document.getElementById('ham');
+  nav.classList.toggle('open');
+  const spans = ham.querySelectorAll('span');
+  if (nav.classList.contains('open')) {
+    spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+  } else {
+    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  }
+}
+
+// ── Nav scroll highlight ──
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  nav.style.padding = window.scrollY > 50 ? '.75rem 5%' : '1.1rem 5%';
+  let current = '';
+  document.querySelectorAll('section[id]').forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 220) current = sec.id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// ── Typing effect ──
+const phrases = [
+  'M2 Systèmes & Réseaux · AFI-Université Dakar',
+  'Linux Admin · VMware · Windows Server',
+  'DevOps Engineer in progress ⚙️',
+  'Docker · Kubernetes · Ansible · CI/CD',
+  'Cloud & Infrastructure · AWS ☁️',
+  'Cybersecurity perspective 🛡️',
+  'Ingénieur IT · Dakar, Sénégal 🇸🇳',
+  'Stage / Alternance 2026 — Disponible 🟢'
+];
+let phraseIndex = 0, charIndex = 0, isDeleting = false;
+const typeEl = document.getElementById('typeLine');
+
+function typeIt() {
+  const current = phrases[phraseIndex];
+  if (isDeleting) {
+    charIndex--;
+    typeEl.textContent = current.substring(0, charIndex);
+    if (charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      setTimeout(typeIt, 350);
+      return;
+    }
+    setTimeout(typeIt, 35);
+  } else {
+    charIndex++;
+    typeEl.textContent = current.substring(0, charIndex);
+    if (charIndex === current.length) {
+      isDeleting = true;
+      setTimeout(typeIt, 2500);
+      return;
+    }
+    setTimeout(typeIt, 65);
+  }
+}
+typeIt();
+
+// ── Project filter ──
+document.querySelectorAll('.filt-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filt-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    const filter = btn.dataset.f;
+    document.querySelectorAll('.proj-card').forEach(card => {
+      card.style.display = (filter === 'all' || card.dataset.c === filter) ? '' : 'none';
+    });
+  });
+});
+
+// ── Contact form ──
+function sendMsg() {
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('formOk').style.display = 'block';
+}
+</script>
+</body>
+</html>
