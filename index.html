@@ -687,7 +687,7 @@ footer{padding:3rem 5%;background:var(--bg);border-top:1px solid var(--bd);text-
             <div class="c-link-t"><div class="c-link-lbl">GitHub</div><div class="c-link-val">github.com/ahamed19i</div></div>
             <span class="c-link-arr">→</span>
           </a>
-          <a href="https://linkedin.com/in/ahamed-hassani-mhoma" target="_blank" class="c-link">
+          <a href="https://linkedin.com/in/ahamed19i" target="_blank" class="c-link">
             <div class="c-link-ic">💼</div>
             <div class="c-link-t"><div class="c-link-lbl">LinkedIn</div><div class="c-link-val">Ahamed Hassani Mhoma</div></div>
             <span class="c-link-arr">→</span>
@@ -701,28 +701,35 @@ footer{padding:3rem 5%;background:var(--bg);border-top:1px solid var(--bd);text-
       <div class="c-form">
         <div id="formContent">
           <h3 style="font-size:1rem;margin-bottom:1.4rem">Envoyer un message</h3>
-          <div class="form-row">
-            <div class="form-g"><label>Prénom</label><input type="text" placeholder="Votre prénom"></div>
-            <div class="form-g"><label>Nom</label><input type="text" placeholder="Votre nom"></div>
-          </div>
-          <div class="form-g"><label>Email</label><input type="email" placeholder="votre@email.com"></div>
-          <div class="form-g">
-            <label>Objet</label>
-            <select>
-              <option>Proposition de stage</option>
-              <option>Opportunité professionnelle</option>
-              <option>Collaboration technique</option>
-              <option>Question sur un projet</option>
-              <option>Autre</option>
-            </select>
-          </div>
-          <div class="form-g"><label>Message</label><textarea placeholder="Décrivez votre proposition..."></textarea></div>
-          <button class="btn btn-p" onclick="sendMsg()" style="width:100%;justify-content:center">✉️ Envoyer</button>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-g"><label>Prénom</label><input type="text" name="prenom" placeholder="Votre prénom" required></div>
+              <div class="form-g"><label>Nom</label><input type="text" name="nom" placeholder="Votre nom" required></div>
+            </div>
+            <div class="form-g"><label>Email</label><input type="email" name="email" placeholder="votre@email.com" required></div>
+            <div class="form-g">
+              <label>Objet</label>
+              <select name="objet">
+                <option>Proposition de stage</option>
+                <option>Opportunité professionnelle</option>
+                <option>Collaboration technique</option>
+                <option>Question sur un projet</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-g"><label>Message</label><textarea name="message" placeholder="Décrivez votre proposition..." required></textarea></div>
+            <button type="submit" class="btn btn-p" id="submitBtn" style="width:100%;justify-content:center">✉️ Envoyer</button>
+          </form>
         </div>
         <div class="form-ok" id="formOk">
           <div style="font-size:3rem;margin-bottom:.8rem">✅</div>
           <div style="font-size:1.1rem;color:var(--tx);margin-bottom:.5rem">Message envoyé !</div>
           <div style="font-size:.78rem;color:var(--tx3)">Je vous répondrai rapidement.</div>
+        </div>
+        <div class="form-ok" id="formErr" style="display:none">
+          <div style="font-size:3rem;margin-bottom:.8rem">❌</div>
+          <div style="font-size:1.1rem;color:var(--da);margin-bottom:.5rem">Erreur d'envoi</div>
+          <div style="font-size:.78rem;color:var(--tx3)">Réessayez ou écrivez directement à ahassanimhoma20@gmail.com</div>
         </div>
       </div>
     </div>
@@ -837,11 +844,33 @@ document.querySelectorAll('.filt-btn').forEach(btn => {
   });
 });
 
-// ── Contact form ──
-function sendMsg() {
-  document.getElementById('formContent').style.display = 'none';
-  document.getElementById('formOk').style.display = 'block';
-}
+// ── Contact form → Formspree ──
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = '⏳ Envoi en cours...';
+  btn.disabled = true;
+
+  const data = new FormData(this);
+
+  try {
+    const res = await fetch('https://formspree.io/f/mwvrejrw', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formOk').style.display = 'block';
+    } else {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formErr').style.display = 'block';
+    }
+  } catch(err) {
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formErr').style.display = 'block';
+  }
+});
 </script>
 </body>
 </html>
